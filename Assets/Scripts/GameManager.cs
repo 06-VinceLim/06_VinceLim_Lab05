@@ -15,11 +15,15 @@ public class GameManager : MonoBehaviour
 
     public float time;
 
+    public int timeRemaining;
+
+    int CoinsLeft;
+
 
     // Start is called before the first frame update
     void Start()
     {
-
+        CoinsLeft = GameObject.FindGameObjectsWithTag("Coins").Length;
     }
 
     // Update is called once per frame
@@ -27,11 +31,18 @@ public class GameManager : MonoBehaviour
     {
         time -= 1 * Time.deltaTime;
 
-        timeText.text = "Time : " + time;
+        timeRemaining = Mathf.FloorToInt(time % 60);
+
+        timeText.text = "Time : " + timeRemaining;
 
         if (time < 0)
         {
             SceneManager.LoadScene("LoseScene");
+        }
+
+        if (CoinsLeft <= 0)
+        {
+            SceneManager.LoadScene("WinScene");
         }
     }
 
@@ -44,6 +55,8 @@ public class GameManager : MonoBehaviour
             score += 10;
 
             scoreUi.text = "Score : " + score;
+
+            CoinsLeft--;
 
             Destroy(other.gameObject);
         }

@@ -1273,7 +1273,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreUi: {fileID: 1454569902}
   timeText: {fileID: 933601372}
-  time: 10
+  time: 40
+  timeRemaining: 0
 --- !u!1 &513957027
 GameObject:
   m_ObjectHideFlags: 0
