@@ -9,7 +9,11 @@ public class GameManager : MonoBehaviour
 
     public Text scoreUi;
 
+    public Text timeText;
+
     int score;
+
+    public float time;
 
 
     // Start is called before the first frame update
@@ -21,7 +25,14 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        time -= 1 * Time.deltaTime;
 
+        timeText.text = "Time : " + time;
+
+        if (time < 0)
+        {
+            SceneManager.LoadScene("LoseScene");
+        }
     }
 
     private void OnTriggerEnter(Collider other)
